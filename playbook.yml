@@ -1,0 +1,11 @@
+---
+- name: Simulate ping to google.com using curl with a proxy
+  hosts: localhost
+  tasks:
+    - name: Simulate ping to google.com using curl with proxy
+      command: curl -x http://tpa-idnproxy.vzbi.com:80 -I http://google.com
+      register: curl_result
+
+    - name: Print curl command results
+      debug:
+        msg: "{{ curl_result.stdout }}"
